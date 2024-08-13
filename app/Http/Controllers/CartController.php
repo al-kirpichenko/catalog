@@ -64,7 +64,7 @@ class CartController extends Controller
 
         session()->forget('cart');
 
-        return redirect()->route('orders.index')->with('success', 'Заказ успешно оформлен!');
+        return redirect()->route('products.index')->with('success', 'Заказ успешно оформлен!');
     }
 
     public function viewOrders()

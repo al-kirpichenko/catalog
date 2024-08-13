@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session()->has('success'))
+        {{ session()->get('success') }}
+    @endif
     <h1>Товары</h1>
     <ul>
         @foreach ($products as $product)

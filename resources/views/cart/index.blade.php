@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session()->has('success'))
+        {{ session()->get('success') }}
+    @endif
     <h1>Корзина</h1>
     <ul>
         @foreach ($cart as $id => $details)
