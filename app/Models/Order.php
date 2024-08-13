@@ -11,4 +11,9 @@ class Order extends Model
 
     protected $fillable = ['total_price'];
 
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
 }
