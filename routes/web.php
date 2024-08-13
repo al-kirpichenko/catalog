@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'index'])->name('products.index');
+Route::post('cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('cart', [CartController::class, 'viewCart'])->name('cart.index');
+Route::post('order', [CartController::class, 'placeOrder'])->name('order.place');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('orders', [CartController::class, 'viewOrders'])->middleware('auth')->name('orders.index');
+Route::delete('orders/{id}', [CartController::class, 'deleteOrder'])->middleware('auth')->name('orders.delete');
