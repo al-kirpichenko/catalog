@@ -20,6 +20,6 @@ Route::get('/', [ProductController::class, 'index'])->name('products.index');
 Route::post('cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('cart', [CartController::class, 'viewCart'])->name('cart.index');
 Route::post('order', [CartController::class, 'placeOrder'])->name('order.place');
-
+Auth::routes();
 Route::get('orders', [CartController::class, 'viewOrders'])->middleware('auth')->name('orders.index');
 Route::delete('orders/{id}', [CartController::class, 'deleteOrder'])->middleware('auth')->name('orders.delete');
